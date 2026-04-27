@@ -20,3 +20,6 @@ jobs:
 
       - name: Check imports
         run: python -c "from core.client import send_request; print('OK')"
+
+      - name: Run tests
+        run: pytest tests/ -v
