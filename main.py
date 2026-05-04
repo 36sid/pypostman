@@ -1,4 +1,8 @@
-from core.client import send_request
+import sys
+from PyQt6.QtWidgets import QApplication
+from ui.main_window import MainWindow
 
-result = send_request("GET", "https://jsonplaceholder.typicode.com/todos/1")
-print(result)
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+sys.exit(app.exec())
