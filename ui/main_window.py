@@ -2,7 +2,7 @@ from core.history import save_request
 import json
 from ui.worker import RequestWorker
 from core.client import send_request
-from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QComboBox, QPushButton, QTextEdit
+from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QComboBox, QPushButton, QTextEdit, QTabWidget, QTableWidget, QTableWidgetItem
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -26,6 +26,22 @@ class MainWindow(QMainWindow):
         top_bar.addWidget(self.url_input)
         top_bar.addWidget(self.send_button)
 
+        #tabs
+        self.tabs = QTabWidget()
+
+        #headers
+        self.headers_table = QTableWidget()
+        self.headers_table.setColumnCount(2)
+        self.headers_table.setHorizontalHeaderLabels(["Key", "Value"])
+        self.headers_table.setRowCount(10)
+
+        # body tab
+        self.body_input = QTextEdit()
+        self.body_input.setPlaceholderText('{\n  "key": "value"\n}')
+
+        self.tabs.addTab(self.headers_table, "Headers")
+        self.tabs.addTab(self.body_input, "Body")
+
         # response area
         self.response_area = QTextEdit()
         self.response_area.setReadOnly(True)
@@ -33,6 +49,7 @@ class MainWindow(QMainWindow):
 
         # add to main layout
         main_layout.addLayout(top_bar)
+        main_layout.addWidget(self.tabs)
         main_layout.addWidget(self.response_area)
 
         self.send_button.clicked.connect(self.handle_send)
