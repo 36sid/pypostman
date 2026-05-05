@@ -20,42 +20,13 @@ A lightweight API client built with Python and PyQt6. Send HTTP requests, inspec
 - **Testing** — pytest
 - **CI** — GitHub Actions
 
-## Project Structure
-
-```
-postman-clone/
-│
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-│
-├── core/
-│   ├── client.py         # HTTP engine
-│   └── history.py        # request history
-│
-├── ui/
-│   ├── main_window.py    # root window and layout
-│   ├── request_panel.py  # request input panel
-│   └── worker.py         # background thread for HTTP calls
-│
-├── tests/
-│   ├── test_client.py
-│   └── test_history.py
-│
-├── data/
-│   └── history.json      # auto-generated, gitignored
-│
-├── main.py
-├── requirements.txt
-└── DEV_NOTES.md
-```
 
 ## Getting Started
 
 **1. Clone the repo**
 
 ```bash
-git clone https://github.com/your-username/postman-clone.git
+git clone https://github.com/36sid/postman-clone.git
 cd postman-clone
 ```
 
