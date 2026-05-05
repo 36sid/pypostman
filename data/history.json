@@ -1,0 +1,28 @@
+[
+  {
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/todos/1",
+    "status_code": 200,
+    "elapsed_ms": 1320.369,
+    "timestamp": "2026-05-05T12:06:49.762432",
+    "body": {
+      "userId": 1,
+      "id": 1,
+      "title": "delectus aut autem",
+      "completed": false
+    }
+  },
+  {
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/todos/1",
+    "status_code": 200,
+    "elapsed_ms": 833.902,
+    "timestamp": "2026-05-05T12:06:56.533973",
+    "body": {
+      "userId": 1,
+      "id": 1,
+      "title": "delectus aut autem",
+      "completed": false
+    }
+  }
+]

@@ -8,3 +8,4 @@ __pycache__/
 *.log
 venv/
 .DEV_NOTES.md
+data/history.json

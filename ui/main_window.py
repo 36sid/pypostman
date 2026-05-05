@@ -1,3 +1,4 @@
+from core.history import save_request
 import json
 from ui.worker import RequestWorker
 from core.client import send_request
@@ -40,10 +41,10 @@ class MainWindow(QMainWindow):
         self.send_button.setEnabled(False)
         self.send_button.setText("Sending...")
 
-        method = self.method_dropdown.currentText()
-        url = self.url_input.text()
+        self.current_method = self.method_dropdown.currentText()
+        self.current_url = self.url_input.text()
 
-        self.worker = RequestWorker(method, url)
+        self.worker = RequestWorker(self.current_method, self.current_url)
         self.worker.finished.connect(self.display_response)
         self.worker.start()
 
@@ -51,6 +52,7 @@ class MainWindow(QMainWindow):
         if result["error"]:
             self.response_area.setText(f"Error: {result['error']}")
         else:
+            save_request(self.current_method, self.current_url, result)
             body = result["body"]
             if isinstance(body, dict) or isinstance(body, list):
                 formatted_body = json.dumps(body, indent=2)
