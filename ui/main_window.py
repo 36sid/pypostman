@@ -61,7 +61,30 @@ class MainWindow(QMainWindow):
         self.current_method = self.method_dropdown.currentText()
         self.current_url = self.url_input.text()
 
-        self.worker = RequestWorker(self.current_method, self.current_url)
+        # read headers from table
+        headers = {}
+        for row in range(self.headers_table.rowCount()):
+            key_item = self.headers_table.item(row, 0)
+            value_item = self.headers_table.item(row, 1)
+            if key_item and value_item:
+                key = key_item.text().strip()
+                value = value_item.text().strip()
+                if key:
+                    headers[key] = value
+
+        # read body
+        body = None
+        body_text = self.body_input.toPlainText().strip()
+        if body_text:
+            try:
+                body = json.loads(body_text)
+            except json.JSONDecodeError:
+                self.response_area.setText("Error: invalid JSON in request body")
+                self.send_button.setEnabled(True)
+                self.send_button.setText("Send")
+                return
+
+        self.worker = RequestWorker(self.current_method, self.current_url, headers, body)
         self.worker.finished.connect(self.display_response)
         self.worker.start()
 
