@@ -2,6 +2,10 @@
 
 A lightweight API client built with Python and PyQt6. Send HTTP requests, inspect responses, and track request history — all from a native desktop UI.
 
+## Demo
+
+<img width="1001" height="782" alt="pypostman_demo" src="https://github.com/user-attachments/assets/bb88c8b0-674a-472a-9080-ddeda3f3f70c" />
+
 ---
 
 ## Features
